@@ -31,7 +31,7 @@ function submit() {
         }
         else{
             tab.push(`Zawodnik ${tab.length+1}`);
-        }
+        } 
     });
 
     shuffle(tab);
