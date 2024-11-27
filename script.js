@@ -11,7 +11,7 @@ iloscZawodników.addEventListener("change", function () {
     var zawodnicy = document.getElementById("zawodnicy");
     zawodnicy.innerHTML = "";
     for (var i = 0; i < iloscZawodników.value; i++) {
-        zawodnicy.innerHTML += `<input type="text" class="zawodnik" value="Zawodnik ${i + 1}"><br>`;
+        zawodnicy.innerHTML += `<input type="text" class="zawodnik" placeholder="Zawodnik ${i + 1}"><br>`;
     }
 });
 
