@@ -26,11 +26,15 @@ function submit() {
     d2.innerHTML = "Drużyna 2:<br>";
 
     document.querySelectorAll(".zawodnik").forEach((zawodnik) => {
-        tab.push(zawodnik.value);
+        if(zawodnik.value){
+            tab.push(zawodnik.value);
+        }
+        else{
+            tab.push(`Zawodnik ${tab.length+1}`);
+        }
     });
 
     shuffle(tab);
-
 
     for(var i = 0; i < tab.length; i++){
         if (i < tab.length / 2) {
