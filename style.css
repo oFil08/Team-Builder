@@ -1,0 +1,96 @@
+/* General Settings */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Input Elements */
+input[type="number"], 
+input[type="text"] {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border: 1px solid #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 200px; /* Adjust width to compensate for padding */
+    box-sizing: border-box;
+}
+
+input[type="number"]:focus, 
+input[type="text"]:focus {
+    outline: none;
+    border-color: #4caf50;
+}
+
+/* Buttons */
+button {
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#hide{
+    background-color:#333;
+    margin-left: 5px;
+    border-radius: 2px;
+    padding: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+#hide:hover{
+    background-color:#282828;
+}
+
+#hide:active{
+    background-color:#1d1d1d;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    background-color: #3e8e41;
+}
+
+/* Team Containers */
+#wynik {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#druzyna1, #druzyna2 {
+    margin-right: 100px;
+    visibility: hidden;
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    padding: 15px;
+    border-radius: 5px;
+    width: 400px;
+    box-sizing: border-box;
+}
+
+#inputs{
+    width: 20%;
+    float: left;
+
+}
+
+#wynik{
+    width:80%;
+    float: left;
+}
+
+
