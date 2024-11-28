@@ -50,9 +50,6 @@ function submit() {
         tab.push(zawodnik.value || `Zawodnik ${tab.length + 1}`);
     });
 
-    const params = new URLSearchParams({ players: JSON.stringify(tab) });
-    window.history.replaceState({}, "", `?${params.toString()}`);
-
     shuffle(tab);
 
     d1.innerHTML = "Drużyna 1:<br>";
