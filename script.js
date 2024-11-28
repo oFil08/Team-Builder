@@ -1,39 +1,4 @@
-function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
-
-function updateNumOfPlayers() {
-    var zawodnicy = document.getElementById("zawodnicy");
-    zawodnicy.innerHTML = "";
-    for (var i = 0; i < iloscZawodnikow.value; i++) {
-        zawodnicy.innerHTML += `<input type="text" class="zawodnik" placeholder="Zawodnik ${i + 1}"><br>`;
-    }
-
-    document.querySelectorAll(".zawodnik").forEach((input, index, inputs) => {
-        input.addEventListener("keydown", function (event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                if (index < inputs.length - 1) {
-                    inputs[index + 1].focus();
-                } else {
-                    submit();
-                    input.blur();
-                }
-            }
-
-            if (event.key === "Backspace") {
-                if (!input.value && index > 0) { 
-                    event.preventDefault();
-                    inputs[index - 1].focus();
-                }
-            }
-        });
-    });
-}
-
+var tab = [];
 var d1 = document.getElementById("druzyna1");
 var d2 = document.getElementById("druzyna2");
 var iloscZawodnikow = document.getElementById("iloscZawodnikow");
@@ -41,11 +6,7 @@ var hideButton = document.getElementById("hide");
 var inputsContainer = document.getElementById("zawodnicy");
 var resetButton = document.getElementById("reset");
 iloscZawodnikow.value = 2;
-var tab = [];
-
-updateNumOfPlayers();
-
-iloscZawodnikow.addEventListener("change", updateNumOfPlayers);
+var ifhidden = false;
 
 function submit() {
     tab = [];
@@ -81,7 +42,6 @@ function reset() {
     tab = [];
 }
 
-var ifhidden = false;
 function hide() {
     if(ifhidden){
         hideButton.innerHTML = "<i class='icon-up'></i>";
@@ -118,6 +78,45 @@ function loadPlayerData() {
         updateNumOfPlayers(); 
     }
 }
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+function updateNumOfPlayers() {
+    var zawodnicy = document.getElementById("zawodnicy");
+    zawodnicy.innerHTML = "";
+    for (var i = 0; i < iloscZawodnikow.value; i++) {
+        zawodnicy.innerHTML += `<input type="text" class="zawodnik" placeholder="Zawodnik ${i + 1}"><br>`;
+    }
+
+    document.querySelectorAll(".zawodnik").forEach((input, index, inputs) => {
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                if (index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                } else {
+                    submit();
+                    input.blur();
+                }
+            }
+
+            if (event.key === "Backspace") {
+                if (!input.value && index > 0) { 
+                    event.preventDefault();
+                    inputs[index - 1].focus();
+                }
+            }
+        });
+    });
+}
+
+updateNumOfPlayers();
+
+iloscZawodnikow.addEventListener("change", updateNumOfPlayers);
 
 document.addEventListener("input", savePlayerData);
 
