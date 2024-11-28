@@ -49,7 +49,7 @@ updateNumOfPlayers();
 iloscZawodnikow.addEventListener("change", updateNumOfPlayers);
 
 function submit() {
-    tab = [];
+    tab = []
     d1.style.visibility = "visible";
     d2.style.visibility = "visible";
     
