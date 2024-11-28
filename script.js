@@ -32,7 +32,6 @@ function updateNumOfPlayers() {
             }
         });
     });
-    savePlayerData();
 }
 
 var d1 = document.getElementById("druzyna1");
@@ -44,6 +43,7 @@ var resetButton = document.getElementById("reset");
 
 var tab = [];
 
+savePlayerData();
 updateNumOfPlayers();
 
 iloscZawodnikow.addEventListener("change", updateNumOfPlayers);
@@ -69,8 +69,6 @@ function submit() {
             d2.innerHTML += `<h2>${player}</h2>`;
         }
     });
-
-    savePlayerData();
 }
 
 function reset() {
@@ -82,7 +80,6 @@ function reset() {
     iloscZawodnikow.value = 2;
     updateNumOfPlayers();
     tab = [];
-    savePlayerData();
 }
 
 var ifhidden = false;
@@ -108,6 +105,7 @@ function savePlayerData() {
         players.push(input.value || "");
     });
     localStorage.setItem("players", JSON.stringify(players));
+    console.log("siema");
 }
 
 function loadPlayerData() {
