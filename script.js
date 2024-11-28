@@ -5,12 +5,10 @@ function shuffle(array) {
     }
 }
 
-var iloscZawodników = document.getElementById("iloscZawodników");
-
 function updateNumOfPlayers() {
     var zawodnicy = document.getElementById("zawodnicy");
     zawodnicy.innerHTML = "";
-    for (var i = 0; i < iloscZawodników.value; i++) {
+    for (var i = 0; i < iloscZawodnikow.value; i++) {
         zawodnicy.innerHTML += `<input type="text" class="zawodnik" placeholder="Zawodnik ${i + 1}"><br>`;
     }
 
@@ -35,17 +33,24 @@ function updateNumOfPlayers() {
         });
     });
 }
+
+var d1 = document.getElementById("druzyna1");
+var d2 = document.getElementById("druzyna2");
+var iloscZawodnikow = document.getElementById("iloscZawodnikow");
+var hideButton = document.getElementById("hide");
+var inputsContainer = document.getElementById("zawodnicy");
+var iloscZawodnikow = document.getElementById("iloscZawodnikow");
+var resetButton = document.getElementById("reset");
+var tab = [];
+
 updateNumOfPlayers();
 
-iloscZawodników.addEventListener("change", updateNumOfPlayers);
+iloscZawodnikow.addEventListener("change", updateNumOfPlayers);
 
 function submit() {
-    var d1 = document.getElementById("druzyna1");
-    var d2 = document.getElementById("druzyna2");
     d1.style.visibility = "visible";
     d2.style.visibility = "visible";
     
-    var tab = [];
     document.querySelectorAll(".zawodnik").forEach((zawodnik) => {
         tab.push(zawodnik.value || `Zawodnik ${tab.length + 1}`);
     });
@@ -64,22 +69,28 @@ function submit() {
     });
 }
 
+function reset(){
+    d1.style.visibility = "hidden";
+    d2.style.visibility = "hidden";
+    iloscZawodnikow.value = 2;
+    updateNumOfPlayers();
+    tab = [];
+    savePlayerData();
+}
+
 var ifhidden = false;
-
 function hide() {
-    let hideButton = document.getElementById("hide");
-    let inputsContainer = document.getElementById("zawodnicy");
-    let iloscZawodników = document.getElementById("iloscZawodników");
-
     if(ifhidden){
         hideButton.innerHTML = "<i class='icon-up'></i>";
-        iloscZawodników.style.display = "initial";
+        iloscZawodnikow.style.display = "initial";
         inputsContainer.style.display = "block";
+        resetButton.style.display = "initial";
         ifhidden = false;
     }else{
         hideButton.innerHTML = "<i class='icon-down'></i>";
-        iloscZawodników.style.display = "none";
+        iloscZawodnikow.style.display = "none";
         inputsContainer.style.display = "none";
+        resetButton.style.display = "none";
         ifhidden = true;
     }
 }
@@ -95,7 +106,7 @@ function savePlayerData() {
 function loadPlayerData() {
     const savedPlayers = JSON.parse(localStorage.getItem("players"));
     if (savedPlayers) {
-        iloscZawodników.value = savedPlayers.length;
+        iloscZawodnikow.value = savedPlayers.length;
         updateNumOfPlayers();
         document.querySelectorAll(".zawodnik").forEach((input, index) => {
             input.value = savedPlayers[index] || "";

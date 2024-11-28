@@ -102,4 +102,13 @@ button:active {
     display: none;
 }
 
+#iloscZawodnikow{
+    width: 128px;
+    float: left;
+}
 
+#reset{
+    background-color: red;
+    margin-left: 10px;
+    padding: 10px 10px;
+}
