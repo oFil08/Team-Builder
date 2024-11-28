@@ -104,7 +104,6 @@ function savePlayerData() {
         players.push(input.value || "");
     });
     localStorage.setItem("players", JSON.stringify(players));
-    console.log("siema");
 }
 
 function loadPlayerData() {
