@@ -112,3 +112,11 @@ button:active {
     margin-left: 10px;
     padding: 10px 10px;
 }
+
+#reset:hover{
+    background-color: #d40000;
+}
+
+#reset:active{
+    background-color: #AA0000;
+}
