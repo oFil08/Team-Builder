@@ -40,10 +40,9 @@ var iloscZawodnikow = document.getElementById("iloscZawodnikow");
 var hideButton = document.getElementById("hide");
 var inputsContainer = document.getElementById("zawodnicy");
 var resetButton = document.getElementById("reset");
-
+iloscZawodnikow.value = 2;
 var tab = [];
 
-savePlayerData();
 updateNumOfPlayers();
 
 iloscZawodnikow.addEventListener("change", updateNumOfPlayers);
