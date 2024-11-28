@@ -1,1 +1,1 @@
-something
+LIŻMA GEN 
