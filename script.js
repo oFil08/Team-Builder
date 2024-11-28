@@ -40,17 +40,21 @@ updateNumOfPlayers();
 iloscZawodników.addEventListener("change", updateNumOfPlayers);
 
 function submit() {
+    var d1 = document.getElementById("druzyna1");
+    var d2 = document.getElementById("druzyna2");
+    d1.style.visibility = "visible";
+    d2.style.visibility = "visible";
+    
     var tab = [];
     document.querySelectorAll(".zawodnik").forEach((zawodnik) => {
-        tab.push(zawodnik.value || `Zawodnik ${tab.length + 1}`); // Use placeholder if empty
+        tab.push(zawodnik.value || `Zawodnik ${tab.length + 1}`);
     });
 
     const params = new URLSearchParams({ players: JSON.stringify(tab) });
     window.history.replaceState({}, "", `?${params.toString()}`);
 
     shuffle(tab);
-    const d1 = document.getElementById("druzyna1");
-    const d2 = document.getElementById("druzyna2");
+
     d1.innerHTML = "Drużyna 1:<br>";
     d2.innerHTML = "Drużyna 2:<br>";
 
