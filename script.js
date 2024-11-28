@@ -40,8 +40,8 @@ var d2 = document.getElementById("druzyna2");
 var iloscZawodnikow = document.getElementById("iloscZawodnikow");
 var hideButton = document.getElementById("hide");
 var inputsContainer = document.getElementById("zawodnicy");
-var iloscZawodnikow = document.getElementById("iloscZawodnikow");
 var resetButton = document.getElementById("reset");
+
 var tab = [];
 
 updateNumOfPlayers();
@@ -49,7 +49,7 @@ updateNumOfPlayers();
 iloscZawodnikow.addEventListener("change", updateNumOfPlayers);
 
 function submit() {
-    tab = []
+    tab = [];
     d1.style.visibility = "visible";
     d2.style.visibility = "visible";
     
@@ -69,11 +69,16 @@ function submit() {
             d2.innerHTML += `<h2>${player}</h2>`;
         }
     });
+
+    savePlayerData();
 }
 
-function reset(){
+function reset() {
     d1.style.visibility = "hidden";
     d2.style.visibility = "hidden";
+    d1.innerHTML = "Drużyna 1:";
+    d2.innerHTML = "Drużyna 2:";
+
     iloscZawodnikow.value = 2;
     updateNumOfPlayers();
     tab = [];
@@ -113,6 +118,8 @@ function loadPlayerData() {
         document.querySelectorAll(".zawodnik").forEach((input, index) => {
             input.value = savedPlayers[index] || "";
         });
+    } else {
+        updateNumOfPlayers(); 
     }
 }
 
