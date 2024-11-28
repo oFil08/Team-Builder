@@ -32,6 +32,7 @@ function updateNumOfPlayers() {
             }
         });
     });
+    savePlayerData();
 }
 
 var d1 = document.getElementById("druzyna1");
@@ -48,6 +49,7 @@ updateNumOfPlayers();
 iloscZawodnikow.addEventListener("change", updateNumOfPlayers);
 
 function submit() {
+    tab = [];
     d1.style.visibility = "visible";
     d2.style.visibility = "visible";
     
