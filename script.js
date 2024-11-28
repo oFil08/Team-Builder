@@ -8,7 +8,7 @@ var resetButton = document.getElementById("reset");
 iloscZawodnikow.value = 2;
 var ifhidden = false;
 
-function submit() {
+function submit(){
     tab = [];
     d1.style.visibility = "visible";
     d2.style.visibility = "visible";
@@ -31,7 +31,7 @@ function submit() {
     });
 }
 
-function reset() {
+function reset(){
     d1.style.visibility = "hidden";
     d2.style.visibility = "hidden";
     d1.innerHTML = "Drużyna 1:";
@@ -42,7 +42,7 @@ function reset() {
     tab = [];
 }
 
-function hide() {
+function hide(){
     if(ifhidden){
         hideButton.innerHTML = "<i class='icon-up'></i>";
         iloscZawodnikow.style.display = "initial";
@@ -58,7 +58,7 @@ function hide() {
     }
 }
 
-function savePlayerData() {
+function savePlayerData(){
     const players = [];
     document.querySelectorAll(".zawodnik").forEach((input) => {
         players.push(input.value || "");
@@ -66,26 +66,27 @@ function savePlayerData() {
     localStorage.setItem("players", JSON.stringify(players));
 }
 
-function loadPlayerData() {
+function loadPlayerData(){
     const savedPlayers = JSON.parse(localStorage.getItem("players"));
-    if (savedPlayers) {
+    if(savedPlayers){
         iloscZawodnikow.value = savedPlayers.length;
         updateNumOfPlayers();
         document.querySelectorAll(".zawodnik").forEach((input, index) => {
             input.value = savedPlayers[index] || "";
         });
-    } else {
+    }else{
         updateNumOfPlayers(); 
     }
 }
-function shuffle(array) {
+
+function shuffle(array){
     for (let i = array.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
 
-function updateNumOfPlayers() {
+function updateNumOfPlayers(){
     var zawodnicy = document.getElementById("zawodnicy");
     zawodnicy.innerHTML = "";
     for (var i = 0; i < iloscZawodnikow.value; i++) {
@@ -96,7 +97,7 @@ function updateNumOfPlayers() {
         input.addEventListener("keydown", function (event) {
             if (event.key === "Enter") {
                 event.preventDefault();
-                if (index < inputs.length - 1) {
+                if (index < inputs.length - 1){
                     inputs[index + 1].focus();
                 } else {
                     submit();
@@ -104,7 +105,7 @@ function updateNumOfPlayers() {
                 }
             }
 
-            if (event.key === "Backspace") {
+            if (event.key === "Backspace"){
                 if (!input.value && index > 0) { 
                     event.preventDefault();
                     inputs[index - 1].focus();
