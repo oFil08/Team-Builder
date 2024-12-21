@@ -22,16 +22,19 @@ function displayWeather(data) {
 }
 
 document.addEventListener("DOMContentLoaded", async function() {
-    console.log("Checking geolocation availability...");
+    console.log("Checking if geolocation is available...");
     
+    // Check if geolocation is available
     if (navigator.geolocation) {
         console.log("Geolocation is available in this browser.");
         
         navigator.geolocation.getCurrentPosition(
             async function(position) {
-                console.log("Location fetched:", position.coords);
+                console.log("Location fetched:", position.coords);  // Log the coordinates for debugging
                 
                 const { latitude, longitude } = position.coords;
+                console.log(`Fetching weather for coordinates: Latitude - ${latitude}, Longitude - ${longitude}`);
+                
                 const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`);
                 
                 if (!response.ok) {
@@ -44,7 +47,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                 displayWeather(data);
             },
             function(error) {
-                console.error("Geolocation error:", error);
+                console.error("Geolocation error:", error);  // Log error details
 
                 if (error.code === error.PERMISSION_DENIED) {
                     weather.innerHTML = "Location permission denied.";
