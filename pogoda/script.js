@@ -22,17 +22,43 @@ function displayWeather(data) {
 }
 
 document.addEventListener("DOMContentLoaded", async function() {
+    console.log("Checking geolocation availability...");
+    
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(async function(position) {
-            const { latitude, longitude } = position.coords;
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`);
-            const data = await response.json();
-            displayWeather(data);
-        }, function(error) {
-            weather.innerHTML = "Error fetching location.";
-            console.error(error);
-        });
+        console.log("Geolocation is available in this browser.");
+        
+        navigator.geolocation.getCurrentPosition(
+            async function(position) {
+                console.log("Location fetched:", position.coords);
+                
+                const { latitude, longitude } = position.coords;
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`);
+                
+                if (!response.ok) {
+                    console.error("Error fetching weather data:", response.status, response.statusText);
+                    weather.innerHTML = "Error fetching weather data.";
+                    return;
+                }
+
+                const data = await response.json();
+                displayWeather(data);
+            },
+            function(error) {
+                console.error("Geolocation error:", error);
+
+                if (error.code === error.PERMISSION_DENIED) {
+                    weather.innerHTML = "Location permission denied.";
+                } else if (error.code === error.POSITION_UNAVAILABLE) {
+                    weather.innerHTML = "Unable to determine location.";
+                } else if (error.code === error.TIMEOUT) {
+                    weather.innerHTML = "Geolocation request timed out.";
+                } else {
+                    weather.innerHTML = "Error fetching location.";
+                }
+            }
+        );
     } else {
+        console.error("Geolocation is not supported by this browser.");
         weather.innerHTML = "Geolocation is not supported by this browser.";
     }
 });
