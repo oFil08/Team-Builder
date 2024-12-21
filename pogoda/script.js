@@ -22,7 +22,7 @@ if (navigator.geolocation) {
             .then(response => response.json())
             .then(data => displayWeather(data))
             .catch(error => {
-                weatherElement.innerHTML = "Error fetching weather data.";
+                weatherElement.innerHTML = "Error fetching weather data. (Does not work on Opera GX idk why)";
                 console.error(error);
             });
     }, function(error) {
