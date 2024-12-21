@@ -1,32 +1,5 @@
-var cityInput = document.getElementById("cityInput");
 var weather = document.getElementById("weather");
 const apiKey = 'd50f398aa84340a5d664df76734dbf09';
-
-async function fetchWeather() {
-
-    var city = cityInput.value.trim();
-    if (!city) {
-        alert("Please enter a city name");
-        return;
-    }
-
-    weather.innerHTML = "Loading...";
-
-    try {
-        var response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
-
-        if (!response.ok) {
-            weather.innerHTML = "City not found or invalid input.";
-            return;
-        }
-
-        var data = await response.json();
-
-        displayWeather(data);
-    } catch (error) {
-        weather.innerHTML = "Error fetching weather data.";
-    }
-}
 
 function displayWeather(data) {
     const { name, main, weather: weatherInfo } = data;
@@ -47,3 +20,19 @@ function displayWeather(data) {
         <p>Temperatura odczuwalna: ${feelsLike}°C</p>
     `;
 }
+
+document.addEventListener("DOMContentLoaded", async function() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async function(position) {
+            const { latitude, longitude } = position.coords;
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`);
+            const data = await response.json();
+            displayWeather(data);
+        }, function(error) {
+            weather.innerHTML = "Error fetching location.";
+            console.error(error);
+        });
+    } else {
+        weather.innerHTML = "Geolocation is not supported by this browser.";
+    }
+});

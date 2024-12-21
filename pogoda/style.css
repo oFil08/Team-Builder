@@ -12,37 +12,3 @@ body {
 #weather {
     margin-top: 20px;
 }
-
-input[type="text"] {
-    text-align: center;
-    background-color: #1e1e1e;
-    color: #ffffff;
-    border: 1px solid #333;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    width: 200px;
-    box-sizing: border-box;
-    height: 38px;
-}
-input[type="text"]:focus {
-    outline: none;
-    border-color: #4caf50;
-}
-
-button {
-    background-color: #4caf50;
-    color: #ffffff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    height: 38px;
-}
-button:hover {
-    background-color: #45a049;
-}
-button:active {
-    background-color: #3e8e41;
-}
