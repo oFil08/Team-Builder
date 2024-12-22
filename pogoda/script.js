@@ -15,7 +15,7 @@ function displayWeather(data) {
     `;
 }
 
-if (navigator.geolocation) {
+if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
         const { latitude, longitude } = position.coords;
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`)
