@@ -1,5 +1,3 @@
-import * as THREE from "three";
-
 var scene = new THREE.Scene();
 scene.background = new THREE.Color('gainsboro');
 
