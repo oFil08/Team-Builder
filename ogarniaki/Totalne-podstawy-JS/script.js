@@ -59,10 +59,28 @@ if (m < n) {
 }
 
 //pętle
+//for
+/*
+    Struktura:
+
+    for (inicjalizacja; warunek; iteracja) {
+        kod który się wykona w każdej iteracji
+    }
+*/
+
 div.innerHTML += `<br><p> <h4>Pętle:</h4>`;
 for (var p = 0; p < 5; p++) {
     div.innerHTML += `for: ${p} <br>`;
 }
+
+//while
+/*
+    Struktura:
+
+    while (warunek) {
+        kod który się wykona w każdej iteracji dopóki warunek jest spełniony
+    }
+*/
 
 var q = 0;
 while (q < 5) {
@@ -91,7 +109,34 @@ div.innerHTML += `<br><p> <h4>Definiowanie funkcji:</h4>add(5, 10) = ${add(5, 10
 // const - stała
 
 //klasa Math
+//Math.sqrt(x) - pierwiastek kwadratowy
+//Math.round(x) - zaokrąglenie
+//Math.floor(x) - zaokrąglenie w dół
+//Math.ceil(x) - zaokrąglenie w górę
+//Math.pow(x, y) - potęgowanie
+//Math.random() - losowa liczba z przedziału 0-1
+
 var num = 9;
 div.innerHTML += `<br><p> <h4>Klasa Math:</h4>Math.sqrt(${num}) = ${Math.sqrt(num)} <br> Math.pow(2, 3) = ${Math.pow(2, 3)} <br> Math.random() = ${Math.random()} </p>`;
 //liczby losowe z przedziału 1-10:
 div.innerHTML += `Math.floor(Math.random() * 10) + 1 = ${Math.floor(Math.random() * 10) + 1}`;
+
+//tablice
+var arr = [1, 2, 3, 4, 5];
+var arr2 = ["a", "b", "c", "d", "e"];
+
+//dostęp do elementów tablicy
+div.innerHTML += `<br><p> <h4>Tablice:</h4>arr = ${arr} <br> arr[0] = ${arr[0]} <br> arr[2] = ${arr[2]} <br> arr.length = ${arr.length} </p>`;
+
+//metody tablic
+arr.push(6); //dodanie elementu na końcu tablicy
+arr.pop(); //usunięcie ostatniego elementu tablicy
+arr.shift(); //usunięcie pierwszego elementu tablicy
+arr.unshift(0); //dodanie elementu na początku tablicy
+
+//iteracja po tablicy
+div.innerHTML += `<br><p> <h4>Iteracja po tablicy:</h4>`;
+arr2.forEach(function (element, index) {
+    div.innerHTML += `arr[${index}] = ${element} <br>`;
+});
+div.innerHTML += `</p>`;
