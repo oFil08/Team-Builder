@@ -1,0 +1,79 @@
+.container {
+    height: 400px;
+    margin: 0 auto;
+    width: 80%;
+    background-color: #3700b3;
+    display: flex; /* to jest ważne żeby sie układały obok siebie */
+}
+
+#div1, #div2, #div3 {
+    height: 100%;
+    width: calc(100% / 3); /* takie gówienko żeby dokładnie było 1/3  calc() to taka śmieszna funkcja która liczy*/
+    float: left; /* to jest ważne żeby sie układały obok siebie */
+}
+
+#div1 {
+    background-color: #03dac6;
+    display: flex;
+    justify-content: center;  /* te 3 sprawiają, że tekst jest po środku*/
+    align-items: center;
+}
+
+#div2 {
+    background-color: #bb86fc;
+    display: flex;
+    align-items: center; /* tutaj tylko te 2*/
+}
+
+#div3 {
+    background-color: #3700b3;
+    display: flex;
+    justify-content: center; /*tutaj ten ostatni*/
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+img{
+    border: rgb(192, 95, 214) 5px dashed; /* dashed - linie przerywane, solid - linia normalna*/ 
+}
+
+a {
+    color: #bb86fc;
+}
+
+a:hover {
+    color: #3700b3;
+}
+
+header, footer {
+    background-color: #1f1f1f;
+    padding: 10px;
+    text-align: center;
+}
+
+button {
+    background-color: #bb86fc;
+    color: #121212;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3700b3;
+}
+
+input, textarea {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #444444;
+    padding: 10px;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #888888;
+}
